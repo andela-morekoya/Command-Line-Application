@@ -4,13 +4,16 @@ getIp: function(ip){
 let najax = require('najax');
 let ipInfo ="";
 const address = ip.split(".");
-if (address.length!=4) {
+let len = address.length;
+if (len!=4) {
+    
     console.log("Invalid IP address!");
-}else{
+}
+else{    
 let callback = function(data){
     const resData = JSON.parse(data);
     if (resData.status == "success") {
-    ipInfo = resData.data.country_name+" "+ resData.data.city_name; 
+    ipInfo = resData.data.country_name.toUpperCase()+" "+ resData.data.city_name; 
     console.log("Your location information is:" + ipInfo);       
     }
 else{
@@ -33,4 +36,4 @@ let test=require("./ConsumeApi.js");
 setTimeout(function() {
 console.log('World!');
 }, 2000);
-console.log(test.getIp("168.16.215.22"));
+console.log(test.getIp("5.19.255.255"));
