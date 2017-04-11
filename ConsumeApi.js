@@ -37,4 +37,4 @@ let test=require("./ConsumeApi.js");
 setTimeout(function() {
 console.log('World!');
 }, 2000);
-console.log(test.getIp("5.19.255.a"));
+console.log(test.getIp("5.19.255.32"));
