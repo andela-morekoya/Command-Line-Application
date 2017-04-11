@@ -13,7 +13,7 @@ else{
 let callback = function(data){
     const resData = JSON.parse(data);
     if (resData.status == "success") {
-    ipInfo = resData.data.country_name.toUpperCase()+" "+ resData.data.city_name; 
+    ipInfo ="[ COUNTRY: "+ resData.data.country_name +" CITY NAME: "+ resData.data.city_name+"]"; 
     console.log("Your location information is:" + ipInfo);       
     }
 else{
@@ -21,8 +21,9 @@ else{
 }
 };
 
-let errorHandler= function(){
-console.log("An error just occured!");
+let errorHandler= function(error){
+    const errData = JSON.parse(error.responseText);
+console.log("An error just occured: "+ (errData.errors)[0].message);
 };
 
 najax({url:"https://ipvigilante.com/json/"+ip, type: "GET"})
@@ -36,4 +37,4 @@ let test=require("./ConsumeApi.js");
 setTimeout(function() {
 console.log('World!');
 }, 2000);
-console.log(test.getIp("5.19.255.255"));
+console.log(test.getIp("5.19.255.a"));
